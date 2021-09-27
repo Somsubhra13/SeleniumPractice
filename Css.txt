@@ -1,0 +1,39 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Css {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//Xpath syntax
+		//    //tagname[@attribute='Value']
+		
+		// if u dont want to give the tag name, Xpath will be work like below
+		
+		//		//*[attribute='value']
+		
+		//CSS syntax
+		//	    tagname[attribute='value'] - no special character
+		
+		// if u dont want to give the tag name, css also works like below
+		
+		//		[attribute='value']
+		
+		
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\377017\\OneDrive - Cognizant\\Desktop\\Selenium Req\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver(); 
+
+		driver.get("https://login.salesforce.com/?locale=in");
+		driver.manage().window().maximize();
+		
+		
+		driver.findElement(By.cssSelector("[id='username']")).sendKeys("Hellow");
+		driver.findElement(By.cssSelector("[id='password']")).sendKeys("Abc");
+		driver.findElement(By.cssSelector("[id='Login']")).click();
+		
+	}
+
+}

@@ -1,0 +1,34 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CheckboxValidation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\377017\\OneDrive - Cognizant\\Desktop\\Selenium Req\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+		driver.manage().window().maximize();
+		
+		driver.findElement(By.id("ctl00_mainContent_chk_friendsandfamily")).click();
+				
+		//now checkin the checkbox has been clicked or not
+		
+		//css selector with regular expression, not taking whole value
+		System.out.println (driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected()); // it will return false first
+		
+		driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();//checkbox is clicked
+		
+		System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected()); // now it will return true value
+		
+		//checking how many checkboxes are present into the page
+		
+		System.out.println(driver.findElements(By.cssSelector("input[type='checkbox']")).size());
+
+	}
+
+}

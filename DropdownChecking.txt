@@ -1,0 +1,72 @@
+import java.awt.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class DropdownChecking {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\377017\\OneDrive - Cognizant\\Desktop\\Selenium Req\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+		driver.manage().window().maximize();
+		
+		//dropdown tag has select value means it is a static dropdown, means value is fixed.
+		
+		/*WebElement staticDropdown = driver.findElement(By.id("ctl00_mainContent_DropDownListCurrency"));
+		
+		Select dropdown = new Select(staticDropdown);
+		dropdown.selectByIndex(1);
+		System.out.println(dropdown.getFirstSelectedOption().getText());
+		
+		dropdown.selectByValue("AED");
+		System.out.println(dropdown.getFirstSelectedOption().getText());
+		
+		dropdown.selectByVisibleText("USD");
+		System.out.println(dropdown.getFirstSelectedOption().getText());
+		
+		*/
+		//select value from passengers dropdown with while loop
+		
+		/*driver.findElement(By.id("divpaxinfo")).click();
+		
+		Thread.sleep(2000);
+		
+		int i=1;
+		
+		while(i<3)
+		{
+		driver.findElement(By.id("hrefIncAdt")).click();
+		i++;
+		}
+		
+		driver.findElement(By.id("btnclosepaxoption")).click();*/
+		
+		driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+				
+		driver.findElement(By.xpath("//a[@text='Kolkata (CCU)']")).click();
+		Thread.sleep(2000);
+		
+		//identifying by xpath - indexing 
+		
+		//driver.findElement(By.xpath("(//a[@text='Kozhikode (CCJ)'])[2]")).click();
+		
+		// sometimes indexing is not allowed from project, so alternate to this concept - parent child xpath relationship is coming
+		// what is parent child xpath relationship?
+		// it is first identifying the parent, then its navigating to its corresponding child of that parent.
+		
+		//identifying the parent by its xpath first, then give one white space, and then place xpath of that child as below:
+		driver.findElement(By.xpath("//*[@id='ctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@text='Kozhikode (CCJ)']")).click();
+		
+		
+				
+	}
+	}
+
+

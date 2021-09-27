@@ -1,0 +1,30 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class RadioButtonPractice {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\377017\\OneDrive - Cognizant\\Desktop\\Selenium Req\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.spicejet.com/");
+		driver.manage().window().maximize(); 
+		
+		//Here we are checking after clicking radio button, any section are getting enabled or not
+		
+		//First it will disable, as the radio button is not clicked, it will give 0.5 value
+		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+		
+		//now clicked the radio button for Round Trip
+		driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
+		
+		//now, it will enabled, so it will give 1 value
+		System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+		
+				
+	}
+
+}

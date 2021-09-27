@@ -1,0 +1,45 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FlightBookingE2E {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\377017\\OneDrive - Cognizant\\Desktop\\Selenium Req\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://www.spicejet.com/");
+		driver.manage().window().maximize(); 
+		
+		//now clicked the radio button for Round Trip
+		driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_1")).click();
+		
+		//Again clicked on One way
+		driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_0")).click();
+				
+		//Select From dropdown and give source station
+		driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+		
+		driver.findElement(By.xpath("//a[@text='Kolkata (CCU)']")).click();
+		Thread.sleep(2000);
+		
+		//Select To dropdown and give destination station name
+		driver.findElement(By.xpath("//*[@id='ctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@text='Kozhikode (CCJ)']")).click();
+		
+		//select current date value
+		driver.findElement(By.cssSelector(".ui-state-default.ui-state-highlight.ui-state-active")).click();
+		
+		//checkbox is clicked
+		driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
+		
+		//Click on search button
+		driver.findElement(By.cssSelector("input[id*='FindFlights']")).click();
+		
+		
+		
+		
+	}
+
+}
