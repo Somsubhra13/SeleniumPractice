@@ -1,0 +1,36 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+
+public class CheckAssertion {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\377017\\OneDrive - Cognizant\\Desktop\\Selenium Req\\chromedriver_win32\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+		driver.manage().window().maximize();
+		
+		//AssertFalse always expecting false value, if it return false value then it passed
+		Assert.assertFalse(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected()); // it will return false first
+		
+		driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();//checkbox is clicked
+		
+		//AssertTrue is return true value by default, if it matches the true value as return, then it will pass
+		Assert.assertTrue(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected()); // now it will return true value
+		
+		//Now, checking AssertEquals, AssertEquals compares 2 values and display the result
+		//So, suppose, 6 checkboxes are present in a page, so i am expecting 6 checkboxes, so AssertEquals compares the output that are getting and my expectations
+		
+		Assert.assertEquals(driver.findElements(By.cssSelector("input[type='checkbox']")).size(), 6);
+		
+		driver.close();
+		
+		
+		
+	}
+
+}
